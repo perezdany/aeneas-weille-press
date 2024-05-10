@@ -65,7 +65,9 @@
             'Search_title' => 'Search',
             'date_label' => 'The Date',
             'dld' => 'Upload',
-            'dld_bhi_title_form' => 'BHI OF'
+            'dld_bhi_title_form' => 'BHI OF',
+            'forget_pass_title' => 'Enter the email of the account',
+            'reset_pass_title' => 'Reset Your Password',
         ],
 
     ]

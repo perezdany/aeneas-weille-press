@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
 
+use App\Mail\ForgottenPassword;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -292,6 +295,22 @@ class UserController extends Controller
         return redirect('customer_welcome')->with('edit_success', 'Updating Successfull');
     }
 
+    public function ResetMyPass(Request $request)
+    {
+        //dd('ici');
+        $user_password = Hash::make($request->pass);
+        //$confirm_pass = Hash::make($request->confirm_pass);
+        //dd($user_password);
+        //on va modifier le mot de passe
+        $affected = DB::table('users')
+            ->where('id', $request->id)
+            ->update(['password' => $user_password]);
+        //dd($affected);
+
+        return redirect()->route('login');
+    }
+
+
     public function EditMyAccount(Request $request)
     {
         $name = $request->fullname;
@@ -311,6 +330,45 @@ class UserController extends Controller
         //dd($update);
 
         return redirect('customer_welcome')->with('edit_success', 'Updating Successfull');
+    }
+
+    public function GetEmailForget(Request $request)
+    {
+
+        //dd('ici');
+        $email = $request->email;
+
+        $le_client = User::where('email_user', $email)->first();
+
+        if($le_client != null)
+        {
+            //dd('ici');
+            $url = config('app.url')."/reset_pass_form/".$le_client->id;
+
+            //echo $url; 
+            
+            $data = ['id_client' => $le_client->id,  'url' => $url];
+      
+            Mail::to($email)->send(new ForgottenPassword($data));
+
+            return redirect('email_forget_form')->with('success', 'Un mail a été envoyé à '. $email. 'consultez votre boîte mail');
+           /* return view('reset_pass_form', [
+                'id' => $le_client->id,
+                ] );*/
+        }
+        return redirect('email_forget_form')->with('error', 'L\'adresse mail renseignée n\'existe pas');
+    }
+
+    public function ResetPassCustomerForm($id)
+    {
+        return view('reset_pass_form', [
+            'id' => $id,
+            ] );
+    }
+
+    public function RessetPassword(Request $request)
+    {
+
     }
 
    

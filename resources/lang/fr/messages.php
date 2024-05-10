@@ -13,5 +13,7 @@
         'error_login' => 'mot de passe utilisateur inexistant ou connexion incorrecte',
         'error_download' => 'Le fichier n\'existe pas',
         'error_search' => 'Aucun élement trouvé',
+        'resset_pass_success' => 'Verifiez votre boîte mail pour la réinitialisation de mot de passe',
+        'resset_pass_error' => 'Adresse mail inexistante',
     ]
 ?>

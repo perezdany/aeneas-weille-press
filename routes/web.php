@@ -51,6 +51,17 @@ app()->setLocale('en');
 
 });*/
 
+//MOT DE PASSE OUBLIE
+Route::get('email_forget_form', function(){
+    return view('email_forget_form');
+});
+
+Route::post('email_forget_form', [UserController::class, 'GetEmailForget']);
+
+Route::get('/reset_pass_form/{id_client}', [UserController::class, 'ResetPassCustomerForm']);
+
+Route::post('reset_pass_form/{id_client}', [UserController::class, 'ResetMyPass']);
+
 //POUR GERER LA LANGUE ON GROUPE DANS CETTE ROUTE
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -413,6 +424,8 @@ Route::group([
 
         //RECHERCHER UN BHI
         Route::post('search_bhi', [BhiController::class, 'SearchBhi']);
+
+
 
         
 

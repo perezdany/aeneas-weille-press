@@ -65,6 +65,8 @@
             'date_label' => 'La Date',
             'dld' => 'Uploader',
             'dld_bhi_title_form' => 'BHI DU',
+            'forget_pass_title' => 'Entrez le mail du compte',
+            'reset_pass_title' => 'Réinitialisation de mot de passe',
             
         ],
 

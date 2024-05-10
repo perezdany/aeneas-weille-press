@@ -14,6 +14,8 @@
         'error_login' => 'non-existent user password or incorrect login',
         'error_download' => 'File does not exist',
         'error_search' => 'No Element found',
+        'resset_pass_success' => 'Check your mail messages please',
+        'resset_pass_error' => 'Mail does not exist',
     ]
 
 ?>

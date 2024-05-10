@@ -170,20 +170,22 @@
                         @endif
 
                     </li>
+                    @if((auth()->user()->super == 1))
+                        <li class="nav-item">
+                            <a class="nav-link" href="customers">
+                                <i class="menu-icon  mdi mdi-briefcase-check "></i>
+                                <span class="menu-title">@lang('menu_admin.Customers')</span>
+                            </a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="customers">
-                            <i class="menu-icon  mdi mdi-briefcase-check "></i>
-                            <span class="menu-title">@lang('menu_admin.Customers')</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="users">
-                            <i class="menu-icon  mdi mdi-account-multiple-plus"></i>
-                            <span class="menu-title">@lang('menu_admin.Users')</span>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users">
+                                <i class="menu-icon  mdi mdi-account-multiple-plus"></i>
+                                <span class="menu-title">@lang('menu_admin.Users')</span>
+                            </a>
+                        </li>
+                    @endif
+                  
 
                     <li class="nav-item">
                         <a class="nav-link" href="press_review">
